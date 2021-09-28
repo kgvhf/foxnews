@@ -7,9 +7,11 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'defaultRoute' => 'news/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+//        '@storage' => '@web/storage',
     ],
     'components' => [
         'request' => [
@@ -47,6 +49,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'news/<action:(index|update|create|delete)>' => 'news/<action>',
+                'news/<slug>' => 'news/view'
             ],
         ],
     ],
